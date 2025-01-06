@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Expense Visualization</title>
+    {% load static %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-image: url("{% static 'home/images/visualization.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            color: rgb(0, 0, 0);
+            text-align: center;
+            padding: 50px 0;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px #00000080;
+        }
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+        table th, table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        h2 {
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Expense Visualization Dashboard
+    </header>
+    <div class="container">
+        <h2>Expenses by Category</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Total Amount (&#8377;)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for expense in category_expenses %}
+                <tr>
+                    <td>{{ expense.category }}</td>
+                    <td>{{ expense.total_amount }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2>Expense Distribution</h2>
+        <div>
+            {{ pie_chart_html|safe }}
+        </div>
+
+        <h2>Total Expenses by Category</h2>
+        <div>
+            {{ bar_chart_html|safe }}
+        </div>
+
+        <div class="button-container">
+            <a href="{% url 'financial_overview' %}" class="btn">Go to Financial Overview</a>
+        </div>
+    </div>
+</body>
+</html>

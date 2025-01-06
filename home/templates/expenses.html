@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  {% load static %}
+  <style>
+    /* General Styling */
+    body {
+      font-family: 'Arial', sans-serif;
+      color: #343a40;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    /* Background Video Styling */
+    .background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1; /* Behind other content */
+    }
+
+    /* Content Styling */
+    .content {
+      position: relative;
+      z-index: 1; /* Above the video */
+    }
+
+    h4, h5 {
+      color: #007bff;
+      font-size: 1.8rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    h5 {
+      font-size: 1.4rem;
+      color: #28a745;
+    }
+
+    .form-container {
+      background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 40px;
+    }
+
+    .table {
+      background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Video -->
+  <video autoplay muted loop class="background-video">
+    <source src="{% static 'home/images/expense.mp4' %}" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Main Content -->
+  <div class="content container mt-5 col-8">
+    <!-- Greeting Section -->
+    <h4>Welcome, {{ request.user.username }}!</h4>
+    <h5>Monthly Budget: &#x20B9;{{ monthly_budget }}</h5>
+    <h5>Salary: &#x20B9;{{ salary }}</h5>
+
+    <!-- Add Expense Form -->
+    <div class="form-container">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h4>Enter Your Expenses</h4>
+            <hr>
+            <div class="form-group">
+              <label for="category">Expense Category</label>
+              <select name="category" class="form-control" required>
+                  <option value="" disabled selected>Select Category</option>
+                  <option value="Food">Food</option>
+                  <option value="Transport">Transport</option>
+                  <option value="Utilities">Utilities</option>
+                  <option value="Shopping">Shopping</option>
+                  <option value="Entertainment">Entertainment</option>
+                  <option value="Healthcare">Healthcare</option>
+                  <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+                <label for="amount">Amount</label>
+                <input name="amount" type="number" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="date">Date of Expense</label>
+                <input name="date" type="date" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-success btn-block">Add Expense</button>
+        </form>
+    </div>
+    
+    <div class="mt-4">
+      <a href="{% url 'pdf' %}" class="btn btn-primary">
+          Download Total Expenses 
+      </a>
+      <a href="{% url 'visualization' %}" class="btn btn-info">
+        View Visualizations
+      </a>
+    </div>
+
+    <!-- Expenses Table -->
+    <div class="table-responsive">
+        <table class="table mt-6">
+            <thead>
+                <tr>
+                    <th scope="col">S.No.</th>
+                    <th scope="col">Expense Category</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for expense in expenses %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ expense.category }}</td>
+                    <td>&#x20B9;{{ expense.amount }}</td>
+                    <td>{{ expense.date }}</td>
+                    <td class="action-buttons">
+                        <a href="/delete_expense/{{ expense.id }}" class="btn btn-danger">Delete</a>
+                        <a href="/update_expense/{{ expense.id }}" class="btn btn-success">Update</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+  </div>
+</body>
+</html>

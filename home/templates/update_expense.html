@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  {% load static %}
+  <style>
+    /* General Styling */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-image: url("{% static 'home/images/update_expense.jpg' %}");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color: #343a40;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Header Styling */
+    h4, h5 {
+      color: #007bff;
+      font-size: 1.8rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    h5 {
+      font-size: 1.4rem;
+      color: #59a728;
+    }
+
+    /* Form Container */
+    .form-container {
+      background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 40px;
+    }
+
+    .form-container h4 {
+      color: #28a745;
+    }
+
+    .form-group label {
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    .form-control {
+      border-radius: 5px;
+      border: 1px solid #ced4da;
+      box-shadow: none;
+    }
+
+    .form-control:focus {
+      border-color: #28a745;
+      box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+    }
+
+    .btn-success {
+      background-color: #28a745;
+      border-color: #28a745;
+    }
+
+    .btn-success:hover {
+      background-color: #218838;
+      border-color: #1e7e34;
+    }
+
+    .btn-danger {
+      background-color: #dc3545;
+      border-color: #dc3545;
+    }
+
+    .btn-danger:hover {
+      background-color: #c82333;
+      border-color: #bd2130;
+    }
+
+    .ok {
+      color: white;
+      text-decoration: none;
+    }
+
+    .ok:hover {
+      color: white;
+      text-decoration: none;
+    }
+
+    /* Responsive Styling */
+    @media (max-width: 768px) {
+      .container {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      .form-container {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container mt-5 col-8">
+  <!-- Greeting Section -->
+  <h4>Update Expense</h4>
+
+  <!-- Update Expense Form -->
+  <div class="form-container">
+      <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <h4>Update Your Expense</h4>
+          <hr>
+          
+          <!-- Expense Category Dropdown -->
+          <div class="form-group">
+            <label for="category">Expense Category</label>
+            <select name="category" class="form-control" required>
+                <option value="" disabled>Select Category</option>
+                <option value="Food" {% if expense.category == 'Food' %} selected {% endif %}>Food</option>
+                <option value="Transport" {% if expense.category == 'Transport' %} selected {% endif %}>Transport</option>
+                <option value="Utilities" {% if expense.category == 'Utilities' %} selected {% endif %}>Utilities</option>
+                <option value="Shopping" {% if expense.category == 'Shopping' %} selected {% endif %}>Shopping</option>
+                <option value="Entertainment" {% if expense.category == 'Entertainment' %} selected {% endif %}>Entertainment</option>
+                <option value="Healthcare" {% if expense.category == 'Healthcare' %} selected {% endif %}>Healthcare</option>
+                <option value="Other" {% if expense.category == 'Other' %} selected {% endif %}>Other</option>
+            </select>
+          </div>
+
+          <!-- Expense Amount -->
+          <div class="form-group">
+              <label for="amount">Amount</label>
+              <input name="amount" type="number" class="form-control" value="{{ expense.amount }}" required>
+          </div>
+
+          <!-- Expense Date -->
+          <div class="form-group">
+              <label for="date">Date of Expense</label>
+              <input name="date" type="date" class="form-control" value="{{ expense.date }}" required>
+          </div>
+
+          <button type="submit" class="btn btn-success btn-block">Update Expense</button>
+      </form>
+  </div>
+  
+  <!-- Back to Expenses Table -->
+  <div class="mt-4">
+    <a href="{% url 'expenses' %}" class="btn btn-primary">Back to Expense 

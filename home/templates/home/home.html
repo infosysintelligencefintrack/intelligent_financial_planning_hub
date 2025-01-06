@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Finance Tracker</title>
+    {% load static %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: url("{% static 'home/images/background_home.jpg' %}") no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+
+        header {
+            background-color: rgba(98, 0, 234, 0.8);
+            color: white;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        header p {
+            margin: 5px 0;
+            font-size: 1.2em;
+        }
+
+        main {
+            margin: 50px auto;
+            max-width: 800px;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.8);
+            color: #333;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .info {
+            margin: 20px 0;
+        }
+
+        .info h2 {
+            color: #6200ea;
+            margin-bottom: 10px;
+        }
+
+        .info p {
+            font-size: 1em;
+            line-height: 1.6;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #6200ea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #3700b3;
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px 0;
+            font-size: 0.9em;
+            color: #fff;
+        }
+
+        .author-footer {
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+
+        .author-footer a {
+            color: #ffcc00;
+            text-decoration: none;
+        }
+
+        .author-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    {% load static %}
+    <header>
+        <h1>Welcome to Personal Finance Tracker</h1>
+        <p>Manage your expenses and savings with ease!</p>
+    </header>
+    <main>
+        <div class="info">
+            <h2>About This Project</h2>
+            <p>This Personal Finance Tracker helps you efficiently manage your income, expenses, and savings. The goal is to provide an easy-to-use tool for tracking your financial habits, improving budgeting, and achieving your financial goals.</p>
+        </div>
+        <div class="buttons">
+            <a href="{% url 'login' %}" class="btn">Login</a>
+            <a href="{% url 'register' %}" class="btn">Register</a>
+            <a href="mailto:balachandar2003.bs@gmail.com" class="btn">Email</a>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 Personal Finance Tracker. All rights reserved.</p>
+        <div class="author-footer">
+            <p>
+                Created by <strong>Balachandar</strong> | 
+                <a href="https://www.linkedin.com/in/balachandar-saravanan/" target="_blank">LinkedIn Profile</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
