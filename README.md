@@ -101,8 +101,9 @@ Here are some key pages of the application:
 
 - 🧑‍💻 **Pylint**: Lint a Python application with Pylint.
 - 🐍 **Python Application**: Package and test a Python application.
-- 
+  
 🙏 Acknowledgments
-We are deeply grateful to everyone who contributed their time, energy, and expertise to make this project a reality. Your valuable feedback and support have been instrumental in shaping its success.
 
-If you enjoy using this project or find it helpful, please consider giving it a ⭐ on GitHub and sharing it within your network. Together, let’s innovate and create impactful solutions! 🚀
+  -We are deeply grateful to everyone who contributed their time, energy, and expertise to make this project a reality. Your valuable feedback and support have been instrumental in shaping its success.
+   
+  -If you enjoy using this project or find it helpful, please consider giving it a ⭐ on GitHub and sharing it within your network. Together, let’s innovate and create impactful solutions! 🚀
