@@ -151,22 +151,28 @@ Then open a web browser and go to http://127.0.0.1:8000 to view the app.
   -Email: balachandar2003.bs@gmail.com
   -GitHub: https://github.com/Bala-chandar2003
 
-  ## Home Page
+## Home Page
 
-![Home Page](images/image.png)
+![Home page image](https://github.com/user-attachments/assets/b4ceada0-fccd-4e42-8d94-f48c607347a9)
 
 ## Login Page
 
-![Login Page](images/image\ copy.png)
+![Login page image](https://github.com/user-attachments/assets/7f15346c-9a62-44f5-abd4-2e374a92f15d)
 
 ## Expense Management Page
 
-![Expense Management](images/image\ copy\ 3.png)
+![Expense management page image](https://github.com/user-attachments/assets/9aa3697f-3d8c-435f-9aad-d59f643096aa)
 
-## Expense Page
 
-![Expense Page](images/image\ copy\ 2.png)
+## Visualization Page
+
+![visualization page image](https://github.com/user-attachments/assets/1f45843f-c092-4b91-9a12-cd4e1260f90f)
+
 
 ## Financial Overview Page
 
-![Financial Overview](images/image\ copy\ 4.png)
+![Financial overview image](https://github.com/user-attachments/assets/25765dfe-25f1-4814-9ee2-026069261122)
+
+![Overview image](https://github.com/user-attachments/assets/b39b7df8-148b-41da-9474-80d8a0f197f7)
+
+
