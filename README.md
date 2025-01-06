@@ -44,7 +44,9 @@ Ensure you have the following installed:
 
 4. Install the required dependencies:
    ```bash
-   pip install -r requirements.txt
+   -python
+   -pandas library
+   -plotly
    ```
 
 5. Set up the database (if necessary):
